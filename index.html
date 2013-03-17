@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+	<meta charset="utf-8" />
+
+	<title>miniLib - a (very) basic mini javascript library</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<link href="css/structure.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="css/main.css" rel="stylesheet" type="text/css" media="screen" />
+
+</head>
+<body class="default jsDisabled">
+	<script type="text/javascript">document.body.className = document.body.className.replace('jsDisabled', '');</script>
+	
+	<div class="wrapper">
+
+		<h1>miniLib - a (very) basic mini javascript library</h1>
+
+		<p>miniLib has been tested in the following browsers:</p>
+		<ul>
+			<li>IE7-10</li>
+			<li>Firefox</li>
+			<li>Chrome</li>
+		</ul>
+
+		<div class="block">
+			<h2>DOM selector</h2>
+			Examples:<br/><br/>
+
+			<p><a href="#" id="idSelector">ID selector</a></p>
+			<pre>
+$(#id);
+			</pre>
+
+			<p><a href="#" class="classSelector">Class selector</a></p>
+			<pre>
+$(.classname);
+			</pre>
+
+			<p><a href="#" class="classSelector tagAlso">Class and tag selector</a></p>
+			<pre>
+$(.classname, tagname);
+			</pre>
+
+			<p><a href="#" class="tagSelector">Tag selector</a></p>
+			<pre>
+$(tagname);
+			</pre>
+		</div>
+
+		<div class="block">
+			<h2>addEvent</h2>
+			Example: <a href="#" class="clickEvent">Click event</a>
+			<pre>
+addEvent(element, event, function(event){
+	// Code goes here
+});
+			</pre>
+
+			<h3>Events</h3>
+			<ul>
+				<li>click</li>
+				<li>blur</li>
+				<li>focus</li>
+				<li>mouseover</li>
+				<li>mouseout</li>
+				<li>touchstart</li>
+				<li>touchend</li>
+			</ul>
+		</div>
+
+		<div class="block">
+			<h2>Prevent default event</h2>
+			<pre>
+stop(event);
+			</pre>
+		</div>
+
+		<div class="block">
+			<h2>Add classname to element</h2>
+			Example: <a href="#" class="addClass">Add class</a>
+			<pre>
+addClass(element, classname);
+			</pre>
+		</div>
+
+		<div class="block">
+			<h2>Remove classname from element</h2>
+			Example: <a href="#" class="removeClass highlight">Remove class</a>
+			<pre>
+removeClass(element, classname);
+			</pre>
+		</div>
+
+		<div class="block">
+			<h2>Toggle classname on element</h2>
+			Example: <a href="#" class="toggleClass highlight">Toggle class</a>
+			<pre>
+toggleClass(element, classname);
+			</pre>
+		</div>
+
+		<div class="block">
+			<h2>Check to see if element has classname - boolean</h2>
+			Example: <a href="#" class="hasClass highlight">Has class</a>
+			<pre>
+hasClass(element, classname);
+			</pre>
+		</div>
+
+		<div class="block">
+			<h2>For each looping</h2>
+			<pre>
+[].forEach.call(array, function(el){
+	// Code goes here
+});
+			</pre>
+		</div>
+		
+	</div>
+
+	<script src="javascript/miniLib.js" type="text/javascript"></script>
+
+	<script type="text/javascript">
+		if(!window.console) console = { log: function(){} };
+
+		addEvent($('#idSelector'), 'click', function(event){
+			stop(event);
+
+			alert($('#idSelector'));
+			console.log($('#idSelector'));
+
+			toggleClass($('#idSelector')[0], 'highlight');
+		});
+
+		addEvent($('.classSelector'), 'click', function(event){
+			stop(event);
+
+			alert($('.classSelector'));
+			console.log($('.classSelector'));
+
+			toggleClass($('.classSelector')[0], 'highlight');
+		});
+
+		addEvent($('.classSelector.tagAlso'), 'click', function(event){
+			stop(event);
+
+			alert($('.block', 'div'));
+			console.log($('.block', 'div'));
+
+			[].forEach.call($('.block', 'div'), function(el){
+				toggleClass(el, 'highlight');
+			});
+		});
+
+		addEvent($('.tagSelector'), 'click', function(event){
+			stop(event);
+			alert($('li'));
+			console.log($('li'));
+		});
+
+		addEvent($('.clickEvent'), 'click', function(event){
+			stop(event);
+			alert('Click event fired!');
+		});
+
+		addEvent($('.setStyle'), 'click', function(event){
+			stop(event);
+			setStyle($('.setStyles'), 'background-color', '#F00');
+		});
+
+		addEvent($('.removeStyle'), 'click', function(event){
+			stop(event);
+			removeStyle($('.setStyles'), 'background-color');
+		});
+
+		addEvent($('.addClass'), 'click', function(event){
+			stop(event);
+			addClass(this, 'highlight');
+		});
+
+		addEvent($('.removeClass'), 'click', function(event){
+			stop(event);
+			removeClass(this, 'highlight');
+		});
+
+		addEvent($('.toggleClass'), 'click', function(event){
+			stop(event);
+			toggleClass(this, 'highlight');
+		});
+
+		addEvent($('.hasClass'), 'click', function(event){
+			stop(event);
+			alert(hasClass(this, 'highlight'));
+			toggleClass(this, 'highlight');
+		});
+	</script>
+
+</body>
+</html>
