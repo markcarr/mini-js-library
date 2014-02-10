@@ -6,9 +6,13 @@ Mini Vanilla JavaScript Library
 Demo: https://rawgithub.com/markcarr/mini-js-library/master/index.html
 
 miniLib has been tested in the following browsers:
-*IE7-10
-*Firefox
-*Chrome
+<ul>
+<li>IE7-10</li>
+<li>Firefox</li>
+<li>Chrome</li>
+</ul>
+
+<hr>
 
 ID selector<br>
 $(#id);
@@ -35,15 +39,6 @@ Example: Click event<br>
 addEvent(element, event, function(event){<br>
 	// Code goes here<br>
 });
-			
-Events:
-*click
-*blur
-*focus
-*mouseover
-*mouseout
-*touchstart
-*touchend
 
 <hr>
 
